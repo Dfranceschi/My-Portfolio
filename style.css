@@ -117,7 +117,7 @@ transition-duration: 2s;
 transition-timing-function: ease; 
 transition-delay: 0s;
 transition: transform 5s ease 0s;
-transition
+
 }
 
 .container:nth-child(1):hover{
