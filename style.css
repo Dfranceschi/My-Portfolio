@@ -28,10 +28,21 @@ body nav li{
   margin: 0%;
 }
 
+a:hover {
+  color: hotpink;
+}
+a{
+  text-decoration: none;
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 100%;
+  text-align: center;
+}
+
 p{
 font-family: Georgia, 'Times New Roman', Times, serif;
 font-size: 75%;
-color: rgb(1, 1, 1);
+color: white;
 text-align: center;
 }
 
@@ -43,6 +54,7 @@ text-align: center;
   border: 20% black;
   
 }
+
 header h1{
   display:block;
   justify-content: center;
@@ -56,10 +68,221 @@ header h1{
 main h1{
   font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center; 
+  color: white;
 }
 main h2{ font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center; 
+  color: white;
 }
 .p{
   font-weight: bolder;
+  color: white;
+}
+.p2{
+  font-weight: bolder;
+  color: white;
+}
+link a:focus-visible{
+  color: hotpink; 
+}
+.outofsight{
+font-size: 75%;
+opacity:0%  
+}
+.outofsight:hover{
+  opacity:100%;
+  color: white;
+}
+
+/* image styles */
+
+.img1{  
+  box-sizing:border-box;
+  width: 50%;
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img2{  
+  box-sizing:border-box;
+  width: 60%;
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img3{  
+  box-sizing:border-box;
+  width: 75%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img4{  
+  box-sizing:border-box;
+  width: 60%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img5{  
+  box-sizing:border-box;
+  width: 50%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+} 
+.logo{  
+  box-sizing:border-box;
+  width: 40%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 50%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.logo2{  
+    
+    box-sizing:border-box;
+    width: 40%;  
+    height:75%;
+    background-color: beige;
+    padding: 1%;  
+    border-radius: 50%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img6{  
+  box-sizing:border-box;
+  width: 60%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img7{  
+  box-sizing:border-box;
+  width: 55%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img8{  
+  box-sizing:border-box;
+  width: 55%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img9{  
+  box-sizing:border-box;
+  width: 55%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img10{  
+  box-sizing:border-box;
+  width: 55%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img11{  
+  box-sizing:border-box;
+  width: 55%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}
+.img12{  
+  box-sizing:border-box;
+  width: 55%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+}   
+.selfimg{  
+  box-sizing:border-box;
+  width: 40%;  
+    height:75%;
+    background-color:beige;
+    padding: 1%;
+    border-radius: 5%;
+    margin: 1%;
+    display:inline-block;
+    vertical-align:top;
+    
+}
+.p2{
+  font-weight: normal;
+  color: white;
+}
+
+/* animation styles */
+.selfimg{
+  width: 50%;
+  height: 50%;
+  background-color: #343538;
+  position: relative;
+  animation-name: myAnimation;
+  animation-duration: 5s;
+ 
+}
+
+@keyframes myAnimation {
+  0%   {background-color:purple; left:0px; top:0px;}
+  25%  {background-color:white; left:200px; top:0px;}
+  50%  {background-color:hotpink; left:200px; top:200px;}
+  75%  {background-color:#4f000b; left:0px; top:200px;}
+  100% {background-color:#343538; left:0px; top:0px;}
 }
