@@ -1,7 +1,7 @@
 body{
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 150%;
-  background-color:#b08968;
+  background-color:#832161,;
 }
 body nav ul{
   display: flex;
@@ -125,7 +125,13 @@ transform: rotate(360deg);
 scale: 1;
 }
 
-
+img {
+  display: block;
+  margin: 0 auto;
+  align-items: center;
+width:20%;
+height:20%;
+}
   
 
 
