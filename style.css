@@ -3,6 +3,14 @@ body{
   font-size: 150%;
   background-color:#FDE1DE;
 }
+
+title{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 150%;
+  background-color:#FDE1DE;
+  text-align: center;
+  text-decoration: bold;
+}
 nav ul{
   display: flex;
   padding: .1%;
@@ -13,6 +21,12 @@ nav ul{
   justify-content: center;
   
 }
+
+a{
+  color:#FDE1DE;
+}
+
+
 nav li{
   display: flex;
   justify-content: space-around;
@@ -40,9 +54,10 @@ a{
 
 p{
 font-family: Georgia, 'Times New Roman', Times, serif;
-font-size: 75%;
+font-size: 65%;
 color: #343538;
 text-align: center;
+margin: 1% 1%
 }
 
 .container {
@@ -54,42 +69,53 @@ text-align: center;
   border: 20% black;
   
 }
-.container2 {
-  display: grid;
-  grid-template-columns:1fr 1fr;  
-  height:auto;
-  padding:0px;
-  margin:20%;
-  gap:16px;
-  justify-content: center;
-}
-.container2 img{
-  width: 85%;
-  height: auto;
-  object-fit: cover;
-} 
-  
-  
 
-
-header h1{
-  display:block;
-  justify-content: center;
+.mockup-grid {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 1rem;
   width: 100%;
-  height: 100%;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  text-align: center;
+}
 
+.mockup-grid .image-container {
+  position: relative;
+  width: 60%;
+  margin: 0;
+}
+
+.mockup-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+  
+  
+
+
+
+  header h1 {
+  width: 100%;
+  margin: 1rem auto;
+  text-align: center;
+  font-weight: bold;
 }
 main h1{
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  text-align: center; 
-  color: white;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
-main h2{ font-family: Georgia, 'Times New Roman', Times, serif;
-  text-align: center; 
-  color: white;
+main h2{
+  text-align: center;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+main p {
+  margin-bottom: 1rem;
 }
 .p{
   font-weight: bolder;
@@ -118,8 +144,8 @@ img {
   display: block;
   margin: 0 auto;
   align-items: center;
-width:20%;
-height:20%;
+width:40%;
+height:40%;
 }
   
 
@@ -195,7 +221,7 @@ height:20%;
 .logo2{  
     
     box-sizing:border-box;
-    width: 35%;  
+    width: 45%;  
     height:50%;
     background-color:#edeff4;
     border: 5px solid #343538;
@@ -227,8 +253,8 @@ height:20%;
 }
 .img8{  
   box-sizing:border-box;
-  width: 55%;  
-    height:75%;
+  width: 100%;  
+    height:100%;
     background-color:#343538;
     padding: 1%;
     margin: 1%;
@@ -237,8 +263,8 @@ height:20%;
 }
 .img9{  
   box-sizing:border-box;
-  width: 55%;  
-    height:75%;
+  width: 100%;  
+    height: 100%;
     background-color:#343538;
     padding: 1%;
     margin: 1%;
@@ -284,18 +310,18 @@ height:20%;
 }
 .p2{
   font-weight: normal;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 
 /* 1. Ensure the wrapper acts as the anchor point for the text */
-.image-container {
+.portrait-container {
   position: relative;
   display: inline-block; /* Keeps the container the exact size of the image */
 }
 
 /* 2. Make sure the image behaves responsively */
-.image-container img {
+.portrait-container img {
   display: block;
   max-width: 100%;
   height: auto;
@@ -345,7 +371,7 @@ body {
   p,
   main h1,
   main h2 {
-    color: #fff;
+    color: #ffffff;
   }
 }
 .image-container {
@@ -367,6 +393,38 @@ body {
   transform: translateX(-50%);
   padding: 0.4rem 0.7rem;
   color: white;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.264);
   text-align: center;
+}
+
+figcaption {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 0.6rem;
+}
+
+.mockups {
+  margin: 2rem auto;
+}
+
+.mockups h1 {
+  text-align: center;
+  background-color: #FDE1DE;
+}
+
+#imageSlider {
+  max-width: 900px;
+  margin: 1rem auto 2rem;
+  border: 5px solid #343538;
+}
+
+#imageSlider .carousel-item img {
+  width: 100%;
+  height: 500px;
+  object-fit: contain;
+  background-color: #343538;
+}
+
+.mockups-description {
+  max-width: 900px;
+  margin: 0 auto 2rem;
 }
