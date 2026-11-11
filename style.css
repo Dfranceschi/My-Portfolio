@@ -141,11 +141,17 @@ link a:focus-visible{
   color: hotpink; 
 }
 .outofsight{
-opacity:0%  
+display: flex;  
+flex-wrap: wrap;
+justify-content: left;
+opacity:0%; 
+text-align: center; 
+
 }
 .outofsight:hover{
   opacity:100%;
   color: white;
+  
 
 }
 
