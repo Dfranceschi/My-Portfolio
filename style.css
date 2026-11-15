@@ -760,3 +760,89 @@ padding-left: 15px;
   padding-right: 15px;
   padding-left: 15px;
 }
+
+/* Centered alternating image-and-text layout for the Branding page */
+:root {
+  --brand-ink: #343538;
+  --brand-blush: #fde1de;
+}
+
+body { color: var(--brand-ink); }
+.brand-content {
+  width: min(100% - 2rem, 1080px);
+  margin-inline: auto;
+}
+.brand-intro {
+  text-align: center;
+  padding: clamp(2rem, 6vw, 5rem) 0 2.5rem;
+}
+.brand-intro-logo {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  margin: 0 auto 2rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.project-facts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .75rem 2rem;
+  margin: 0 auto 2rem;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 12rem;
+}
+.project-facts li { min-width: 150px; }
+.project-facts strong { display: block; }
+.brand-description {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 1.75;
+}
+.story-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+.story-row + .story-row { border-top: 1px solid #dedede; }
+.story-row--image-right .story-image { order: 2; }
+.story-image { margin: 0; text-align: center; }
+.story-image img {
+  display: block;
+  width: 100%;
+  max-height: 470px;
+  object-fit: contain;
+  margin: auto;
+}
+.story-image figcaption { margin-top: .75rem; font-size: .95rem; color: #666; }
+.story-copy h2 { margin-bottom: 1rem; color: var(--brand-ink); }
+.story-copy p { line-height: 1.75; margin-bottom: 0; }
+.section-title {
+  margin: 3rem 0 0;
+  padding: 1rem;
+  text-align: center;
+  color: var(--brand-ink);
+}
+#imageSlider { max-width: 900px; margin: 0 auto 4rem; }
+#imageSlider .carousel-item img {
+  width: 100%;
+  height: min(65vw, 560px);
+  object-fit: contain;
+  background: #faf8f7;
+}
+#imageSlider .carousel-caption {
+  background: rgb(52 53 56 / 72%);
+  border-radius: .35rem;
+  padding: .4rem .8rem;
+}
+footer { text-align: center; padding: 1.5rem; }
+
+@media (max-width: 700px) {
+  .story-row { grid-template-columns: 1fr; gap: 1.25rem; }
+  .story-row--image-right .story-image { order: 0; }
+  .story-image img { max-height: 360px; }
+}
