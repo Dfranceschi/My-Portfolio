@@ -709,3 +709,54 @@ nav ul.site-nav a {
   height: auto;
   border-radius: 9px;
 }
+
+.featurette-divider {
+  border: 0;
+  height: 40%;
+  
+}
+
+hr {
+margin: 4rem 0;
+color: inherit;
+border: 0;
+border-top: var(--bs-border-width) solid;
+opacity: 0;
+}
+
+
+.row2 {
+margin-right: 15px;
+margin-left: 15px;
+float: left;
+position: relative;
+}
+
+
+
+
+.row{
+margin-right: -15px;
+margin-left: -15px;
+float: left;
+position: relative;
+min-height: 1px;
+padding-right: 15px;
+padding-left: 15px;
+}
+
+
+
+
+.featurette-image {
+  width: 80%;
+  height: auto;
+  border-radius: 9px;
+}
+
+.col-md-pull-7 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
