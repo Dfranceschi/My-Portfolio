@@ -6,7 +6,7 @@ body{
 
 title{
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 150%;
+  font-size: 2rem;
   background-color:#FDE1DE; 
   text-align: center;
   text-decoration: bold;
@@ -416,7 +416,7 @@ height:40%;
   left: 50%;
   transform: translateX(-50%);
   padding: 0.4rem 0.7rem;
-  color: white;
+  color: #FDE1DE;
   background-color: rgba(0, 0, 0, 0.264);
   text-align: center;
 }
@@ -424,6 +424,7 @@ height:40%;
 figcaption {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 0.6rem;
+  color:#FDE1DE;
 }
 
 .mockups {
@@ -771,10 +772,12 @@ body { color: var(--brand-ink); }
 .brand-content {
   width: min(100% - 2rem, 1080px);
   margin-inline: auto;
+ 
 }
 .brand-intro {
   text-align: center;
   padding: clamp(2rem, 6vw, 5rem) 0 2.5rem;
+
 }
 .brand-intro-logo {
   display: block;
@@ -782,6 +785,7 @@ body { color: var(--brand-ink); }
   height: auto;
   margin: 0 auto 2rem;
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  
 }
 .project-facts {
   display: flex;
@@ -817,8 +821,9 @@ body { color: var(--brand-ink); }
   max-height: 470px;
   object-fit: contain;
   margin: auto;
+  background: #faf8f7;
 }
-.story-image figcaption { margin-top: .75rem; font-size: .95rem; color: #666; }
+.story-image figcaption { margin-top: .75rem; font-size: .95rem; color: #FDE1DE; }
 .story-copy h2 { margin-bottom: 1rem; color: var(--brand-ink); }
 .story-copy p { line-height: 1.75; margin-bottom: 0; }
 .section-title {
@@ -846,3 +851,10 @@ footer { text-align: center; padding: 1.5rem; }
   .story-row--image-right .story-image { order: 0; }
   .story-image img { max-height: 360px; }
 }
+
+body { color: var(--brand-ink); }
+.aboutme {
+  width: min(100% - 2rem, 1080px);
+  margin-inline: auto;
+}
+
