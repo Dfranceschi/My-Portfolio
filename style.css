@@ -247,7 +247,7 @@ height:40%;
     margin: 1%;
     display:inline-block;
     vertical-align:top;
-
+}
     .logo3{  
     box-sizing:border-box;
     display:flex;
@@ -258,7 +258,7 @@ height:40%;
     align-items: center;
   
   }
-}
+
 .img6{  
   box-sizing:border-box;
   width: 50%;  
@@ -390,10 +390,21 @@ height:40%;
     background-color: #a57982;
     color: #343538;
   }
+  span,
+  title {
+    color:#FDE1DE
+  }
 
   a,
   p {
     color: #ffffff;
+  }
+}
+@media (prefers-color-scheme: light) {
+  span,
+  title { 
+    color:#343538
+
   }
 }
 .image-container {
