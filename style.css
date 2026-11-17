@@ -28,7 +28,7 @@ span{
   font-weight: bold;
   align-items: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 150%;
+  font-size: 180%;
   color:#FDE1DE;
   text-align: center;
   text-decoration: bold;
@@ -388,13 +388,11 @@ height:40%;
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #a57982;
-    color: #fff;
+    color: #343538;
   }
 
   a,
-  p,
-  main h1,
-  main h2 {
+  p {
     color: #ffffff;
   }
 }
