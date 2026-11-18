@@ -1,45 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Branding</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Branding</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --page-bg: #FDE1DE;
+      --page-fg: #343538;
+      --surface-bg: #FDE1DE;
+      --link-color: #343538;
+      --border-color: #343538;
+      --brand-blush: #FDE1DE;
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --page-bg: #A57982;
+      --page-fg: #343538;
+      --surface-bg: #A57982;
+      --link-color: #343538;
+      --border-color: #343538;
+      --brand-blush: #A57982;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--page-bg);
+      color: var(--page-fg);
+      transition: background-color .25s ease, color .25s ease;
+    }
+    body, header, nav, main, footer, section, .story-copy, .brand-description {
+      color: var(--page-fg);
+    }
+    p, span, li, h1, h2, h3, figcaption, strong { color: inherit; }
+    :root[data-theme="dark"] p { color: #fff; }
+    a { color: var(--link-color); }
+    a:hover, a:focus-visible { color: var(--page-fg); }
+    .story-copy, .brand-description { background-color: var(--surface-bg); }
+    .section-title { background-color: var(--brand-blush) !important; color: var(--page-fg); }
+    #theme-btn {
+      position: fixed;
+      z-index: 1050;
+      top: 1rem;
+      right: 1rem;
+      background: var(--surface-bg);
+      border: 2px solid var(--border-color);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      color: var(--page-fg);
+    }
+    #theme-btn:focus-visible { outline: 3px solid var(--link-color); outline-offset: 3px; }
+    #sun-icon { display: none; }
+    :root[data-theme="dark"] #moon-icon { display: none; }
+    :root[data-theme="dark"] #sun-icon { display: block; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      body { transition: none; }
+    }
+  </style>
 </head>
-<style>
-  html,
-  body {
-    min-height: 100%;
-  }
+<body id="top">
+  <button id="theme-btn" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+    <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+    </svg>
+    <svg id="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
 
-  body {
-    position: relative;
-    padding-bottom: 75px;
-  }
-
-  footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    min-height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-  }
-</style>
-
-<body>
   <header class="site-header">
     <a class="brand" href="index.html">
       <img class="logo3" src="dzimg/dzcolorlogo.png" alt="Circular logo">
       <span class="brand-name">Branding</span>
     </a>
   </header>
+
   <nav aria-label="Main navigation">
     <a href="#main" class="outofsight">Skip to Main Content</a>
     <ul class="site-nav">
@@ -56,17 +102,17 @@
       <img class="brand-intro-logo" src="dzimg/dzcolorlogo.png" alt="Circular logo">
       <h1 id="project-title">Personal Branding</h1>
       <ul class="project-facts">
-  <li><strong>Project:</strong> Personal Logo</li>
-  <li><strong>Timeline:</strong> September 14–December 12, 2025</li>
-  <li><strong>Tools:</strong> Adobe Illustrator, After Effects, Photoshop</li>
-</ul>
+        <li><strong>Project:</strong> Personal Logo</li>
+        <li><strong>Timeline:</strong> September 14–December 12, 2025</li>
+        <li><strong>Tools:</strong> Adobe Illustrator, After Effects, Photoshop</li>
+      </ul>
       <div class="brand-description">
         <h2>Description</h2>
         <p>In my personal brand, I interwove my initials, “DZ,” to create a sense of connection—each letter supporting the other as a symbol of collaboration, unity, and belonging. A soft yet confident color palette reinforces this idea, expressing authenticity, compassion, and optimism while signaling a forward-looking spirit. At the center of the emblem, subtle motifs inspired by Taíno symbolism add deeper meaning. These glyph-like forms, reminiscent of traditional petroglyphs, reflect themes of renewal, cosmic balance, and an enduring connection to the land. By incorporating these indigenous influences, the design honors ancestral heritage, grounds the brand in community, and embodies a sense of growth and transformation. Together, these elements communicate a message of inclusive strength—celebrating our origins, embracing shared identity, and looking toward a brighter, collective future.</p>
       </div>
     </section>
 
-     <section class="story-row" aria-labelledby="variations-title">
+    <section class="story-row" aria-labelledby="variations-title">
       <figure class="story-image">
         <img src="dzimg/dzlogovariation.jpg" alt="Two circular logos">
         <figcaption>Variations of My Personal Logo</figcaption>
@@ -79,7 +125,7 @@
 
     <section class="story-row story-row--image-right" aria-labelledby="construction-title">
       <figure class="story-image">
-        <img src="dzimg/dztypeconstruction.png" alt="Letters of D and Z">
+        <img src="dzimg/dztypeconstruction.png" alt="Letters D and Z">
         <figcaption>Construction Process</figcaption>
       </figure>
       <div class="story-copy">
@@ -110,26 +156,64 @@
       </div>
     </section>
 
-    <h2 class="section-title" id="mockups-title" style="background-color: var(--brand-blush)">Mockups</h2>
+    <h2 class="section-title" id="mockups-title">Mockups</h2>
     <div id="imageSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" aria-labelledby="mockups-title">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
-        <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
-        <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+        <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active"><img src="dzimg/dzblackandwhitebag.png" alt="Black and white tote bag with the letters D and Z combined in the center"><div class="carousel-caption d-none d-md-block"><h3>Bag Mockup</h3></div></div>
-        <div class="carousel-item"><img src="dzimg/hatmockupinstagrampost.png" alt="Beige hat with the letters D and Z combined in the center"><div class="carousel-caption d-none d-md-block"><h3>Hat Mockup</h3></div></div>
-        <div class="carousel-item"><img src="dzimg/mockupbusinesscardsandbottles.png" alt="Business cards and bottles featuring the personal brand"><div class="carousel-caption d-none d-md-block"><h3>Business Cards &amp; Bottles Mockup</h3></div></div>
+        <div class="carousel-item active">
+          <img src="dzimg/dzblackandwhitebag.png" alt="Black and white tote bag with the letters D and Z combined in the center">
+          <div class="carousel-caption d-none d-md-block"><h3>Bag Mockup</h3></div>
+        </div>
+        <div class="carousel-item">
+          <img src="dzimg/hatmockupinstagrampost.png" alt="Beige hat with the letters D and Z combined in the center">
+          <div class="carousel-caption d-none d-md-block"><h3>Hat Mockup</h3></div>
+        </div>
+        <div class="carousel-item">
+          <img src="dzimg/mockupbusinesscardsandbottles.png" alt="Business cards and bottles featuring the personal brand">
+          <div class="carousel-caption d-none d-md-block"><h3>Business Cards &amp; Bottles Mockup</h3></div>
+        </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#imageSlider" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-      <button class="carousel-control-next" type="button" data-bs-target="#imageSlider" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+      <button class="carousel-control-prev" type="button" data-bs-target="#imageSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#imageSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
   </main>
-  <footer> <a href="#top">&#11014; Back to top</a> <p>© 2026</p></footer>
+
+  <footer>
+    <a href="#top">&#11014; Back to top</a>
+    <p>© 2026</p>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeButton = document.getElementById('theme-btn');
+    const savedTheme = localStorage.getItem('theme');
+
+    function setTheme(theme) {
+      const isDark = theme === 'dark';
+      root.dataset.theme = isDark ? 'dark' : 'light';
+      themeButton.setAttribute('aria-pressed', String(isDark));
+      themeButton.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    setTheme(savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+    themeButton.addEventListener('click', () => {
+      const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      setTheme(nextTheme);
+      localStorage.setItem('theme', nextTheme);
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/function.js"></script>
-
-
 </body>
 </html>
