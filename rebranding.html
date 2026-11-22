@@ -124,6 +124,15 @@
         <p>This is the original Frinj Coffee logo from the company's website, which features all capital letters. The design was refined to create a more modern and balanced appearance.</p>
       </div>
     </section>
+
+    <dialog id="image-lightbox" aria-label="Enlarged image">
+  <button id="image-lightbox-close" type="button" aria-label="Close enlarged image">&times;</button>
+  <figure>
+    <img id="lightbox-image" src="" alt="">
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+</dialog>
+
     <section class="story-row story-row--image-right" aria-labelledby="construction-title">
       <figure class="story-image">
         <img src="fringimg/frinjlogoconcept.png" 
@@ -253,6 +262,47 @@
   </main>
   <footer> <a href="#top">&#11014; Back to top</a>
     <p>© 2026</p></footer>
+
+    <script>
+  const lightbox = document.getElementById('image-lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('image-lightbox-close');
+
+  document.querySelectorAll('#main img').forEach((image) => {
+    image.tabIndex = 0;
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', `Enlarge image: ${image.alt || 'portfolio image'}`);
+
+    function openLightbox() {
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt;
+      lightboxCaption.textContent =
+        image.closest('figure')?.querySelector('figcaption')?.textContent || image.alt;
+      lightbox.showModal();
+      lightboxClose.focus();
+    }
+
+    image.addEventListener('click', openLightbox);
+    image.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openLightbox();
+      }
+    });
+  });
+
+  lightboxClose.addEventListener('click', () => lightbox.close());
+
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) lightbox.close();
+  });
+
+  lightbox.addEventListener('close', () => {
+    lightboxImage.src = '';
+  });
+</script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const root = document.documentElement;
