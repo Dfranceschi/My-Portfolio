@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FDE1DE">
+  <meta name="description" content="A quiet, image-first photo gallery.">
+  <title>Photography</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --page-bg: #FDE1DE;
+      --page-fg: #343538;
+      --surface-bg: #FDE1DE;
+      --link-color: #343538;
+      --border-color: #343538;
+      --brand-blush: #FDE1DE;
+      --muted: #5f5758;
+      --gutter: clamp(16px, 3.2vw, 48px);
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --page-bg: #A57982;
+      --page-fg: #343538;
+      --surface-bg: #A57982;
+      --link-color: #343538;
+      --border-color: #343538;
+      --brand-blush: #A57982;
+      --muted: #fff;
+    }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    html { background: var(--page-bg); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      position: relative;
+      padding-bottom: 75px;
+      color: var(--page-fg);
+      background: var(--page-bg);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color .25s ease, color .25s ease;
+    }
+    p, span { color: inherit; }
+    :root[data-theme="dark"] .note { color: #fff; }
+    header {
+      min-height: 86px;
+      padding: 22px var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { font-size: 20px; font-weight: 650; letter-spacing: -.035em; color: var(--link-color); text-decoration: none; }
+    .note { margin: 0 56px 0 0; color: var(--muted); font-size: 15px; letter-spacing: .02em; }
+    .site-nav a { font-size: 18px; }
+    .site-nav a { font-size: 19px; }
+    main { padding: 10px var(--gutter) 48px; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
+      gap: clamp(12px, 1.6vw, 24px);
+    }
+    .photo {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+      break-inside: avoid;
+      overflow: hidden;
+    }
+    .photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: transparent;
+      transition: opacity 180ms ease;
+    }
+    .photo:hover img { opacity: .88; }
+    .photo:focus-visible { outline: 2px solid var(--page-fg); outline-offset: 4px; }
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      min-height: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 16px;
+      font-size: 18px;
+    }
+    footer p { margin: 0; }
+    #theme-btn {
+      position: fixed; z-index: 1050; top: 1rem; right: 1rem;
+      background: var(--surface-bg); border: 2px solid var(--border-color);
+      border-radius: 50%; width: 45px; height: 45px; cursor: pointer;
+      display: grid; place-items: center; color: var(--page-fg); font-size: 20px;
+    }
+    #theme-btn:focus-visible { outline: 3px solid var(--link-color); outline-offset: 3px; }
+    #theme-btn svg { width: 20px; height: 20px; flex: none; }
+    #theme-btn #moon-icon { display: block; }
+    #theme-btn #sun-icon { display: none; }
+    :root[data-theme="dark"] #theme-btn #moon-icon { display: none; }
+    :root[data-theme="dark"] #theme-btn #sun-icon { display: block; }
+
+    dialog {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      color: #fff;
+      background: rgba(12, 12, 11, .97);
+      overflow: hidden;
+    }
+    dialog[open] { display: grid; place-items: center; }
+    dialog::backdrop { background: rgba(12, 12, 11, .97); }
+    .lightbox-image {
+      display: block;
+      max-width: min(94vw, 1800px);
+      max-height: 88dvh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+    .lightbox-bar {
+      position: absolute;
+      inset: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      pointer-events: none;
+    }
+    .lightbox-count { color: rgba(255,255,255,.72); font-size: 15px; font-variant-numeric: tabular-nums; }
+    .close {
+      width: 42px; height: 42px; border: 0; border-radius: 50%;
+      color: white; background: rgba(255,255,255,.12); font-size: 25px;
+      cursor: pointer; pointer-events: auto;
+    }
+    .close:hover { background: rgba(255,255,255,.22); }
+    .nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 46px; height: 56px; border: 0; color: white;
+      background: rgba(255,255,255,.10); font-size: 28px; cursor: pointer;
+    }
+    .nav:hover { background: rgba(255,255,255,.2); }
+    .previous { left: 16px; }
+    .next { right: 16px; }
+    .caption {
+      position: absolute; inset: auto 0 0; padding: 32px 24px 22px;
+      text-align: center; color: rgba(255,255,255,.75); font-size: 15px;
+      background: linear-gradient(transparent, rgba(0,0,0,.4));
+    }
+    @media (max-width: 600px) {
+      header { min-height: 68px; }
+      main { padding-top: 4px; }
+      .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .lightbox-image { max-width: 100vw; max-height: 82dvh; }
+      .previous { left: 8px; }
+      .next { right: 8px; }
+      .lightbox-bar { padding: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
+      body { transition: none; }
+    }
+  </style>
+</head>
+<body id="top">
+  <button id="theme-btn" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+    <svg id="moon-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+    <svg id="sun-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+  </button>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img class="logo3" src="dzimg/dzcolorlogo.png" alt="Circular logo with DZ initials and petroglyphs">
+      <span class="brand-name">Photography</span>
+      
+    </a>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <a href="#main" class="outofsight">Skip to Main Content</a>
+    <ul class="site-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="branding.html">Branding</a></li>
+      <li><a href="rebranding.html">Rebranding</a></li>
+      <li><a href="typography.html">Typography</a></li>
+      <li><a href="photogallery.html" aria-current="page">Photography</a></li>
+      <li><a href="aboutme.html">About Me</a></li>
+      <li><a href="contactinfo.html">Contact Info</a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+    <section class="gallery" aria-label="Photo gallery">
+      <!-- Replace each src with your image. Keep width/quality parameters for smaller downloads. -->
+      <button class="photo" type="button" aria-label="Light in the palm of your hand.">
+        <img src="photogallery/photo1.jpg" alt="Hand holding light with palm trees in the background." width="1000" height="1250" fetchpriority="high" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Light Writing">
+        <img src="photogallery/photo2.jpg" alt="Light writing in the shape of a heart." width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Quote the Raven">
+        <img src="photogallery/photo3.jpg" alt="Two gold skulls with golden wings in the center." width="1000" height="1200" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Night Lights">
+        <img src="photogallery/photo4.jpg" alt="Freeway of red and white lights blurred." width="1000" height="800" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Open road">
+        <img src="photogallery/photo5.jpg" alt="A winding path through a mountain landscape" width="1000" height="1250" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo6.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo7.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo8.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo10.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo11.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo12.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo13.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo14.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo15.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo16.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo17.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo18.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+      <button class="photo" type="button" aria-label="Open photo: Window light">
+        <img src="photogallery/photo19.jpg" alt="A sunlit, minimal interior" width="1000" height="750" loading="lazy" decoding="async">
+      </button>
+    </section>
+  </main>
+  <footer>
+    <a href="#top">&#11014; Back to top</a>
+    <p>© 2026</p>
+  </footer>
+
+  <dialog id="lightbox" aria-label="Photo viewer">
+    <div class="lightbox-bar">
+      <span class="lightbox-count" id="count" aria-live="polite"></span>
+      <button class="close" type="button" aria-label="Close photo viewer">×</button>
+    </div>
+    <button class="nav previous" type="button" aria-label="Previous photo">‹</button>
+    <img class="lightbox-image" alt="">
+    <button class="nav next" type="button" aria-label="Next photo">›</button>
+    <div class="caption" id="caption"></div>
+  </dialog>
+
+  <script>
+    (() => {
+      const themeButton = document.querySelector('#theme-btn');
+      const root = document.documentElement;
+      let savedTheme = 'light';
+      try { savedTheme = localStorage.getItem('theme') || 'light'; } catch {}
+      function setTheme(theme) {
+        root.dataset.theme = theme;
+        const isDark = theme === 'dark';
+        themeButton.setAttribute('aria-pressed', String(isDark));
+        themeButton.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        document.querySelector('meta[name="theme-color"]').content = isDark ? '#A57982' : '#FDE1DE';
+        try { localStorage.setItem('theme', theme); } catch {}
+      }
+      setTheme(savedTheme);
+      themeButton.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+
+      const photos = [...document.querySelectorAll('.photo img')];
+      const dialog = document.querySelector('#lightbox');
+      const largeImage = dialog.querySelector('.lightbox-image');
+      const count = document.querySelector('#count');
+      const caption = document.querySelector('#caption');
+      let current = 0;
+      let opener;
+
+      function show(index) {
+        current = (index + photos.length) % photos.length;
+        const photo = photos[current];
+        largeImage.src = photo.src.replace(/w=\d+/, 'w=2000').replace(/q=\d+/, 'q=85');
+        largeImage.alt = photo.alt;
+        caption.textContent = photo.alt;
+        count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
+      }
+      function open(index) {
+        opener = document.activeElement;
+        show(index);
+        dialog.showModal();
+      }
+      photos.forEach((photo, index) => {
+        photo.closest('button').addEventListener('click', () => open(index));
+      });
+      dialog.querySelector('.close').addEventListener('click', () => dialog.close());
+      dialog.querySelector('.previous').addEventListener('click', () => show(current - 1));
+      dialog.querySelector('.next').addEventListener('click', () => show(current + 1));
+      dialog.addEventListener('click', event => {
+        if (event.target === dialog) dialog.close();
+      });
+      dialog.addEventListener('close', () => opener?.focus());
+      dialog.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft') show(current - 1);
+        if (event.key === 'ArrowRight') show(current + 1);
+      });
+    })();
+  </script>
+</body>
+</html>
