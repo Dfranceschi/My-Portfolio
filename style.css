@@ -867,3 +867,53 @@ body { color: var(--brand-ink); }
   margin-inline: auto;
 }
 
+#main img:not(.carousel-control-prev-icon):not(.carousel-control-next-icon) {
+  cursor: zoom-in;
+}
+
+#image-lightbox {
+  width: min(95vw, 1400px);
+  max-width: none;
+  max-height: 95vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+#image-lightbox::backdrop {
+  background: rgb(0 0 0 / 85%);
+}
+
+#image-lightbox img {
+  display: block;
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  cursor: zoom-out;
+}
+
+#image-lightbox figcaption {
+  padding: 0.75rem;
+  color: #fff;
+  text-align: center;
+}
+
+#image-lightbox-close {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #222;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}

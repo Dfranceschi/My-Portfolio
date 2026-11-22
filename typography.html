@@ -79,6 +79,30 @@
     </svg>
   </button>
 
+<script>
+  const themeButton = document.getElementById('theme-btn');
+  const savedTheme = localStorage.getItem('theme') || 'light';
+
+  function setTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    const isDark = theme === 'dark';
+    themeButton.setAttribute('aria-pressed', String(isDark));
+    themeButton.setAttribute(
+      'aria-label',
+      isDark ? 'Switch to light mode' : 'Switch to dark mode'
+    );
+    localStorage.setItem('theme', theme);
+  }
+
+  setTheme(savedTheme);
+
+  themeButton.addEventListener('click', () => {
+    const nextTheme =
+      document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+  });
+</script>
+
   <header class="site-header">
     <a class="brand" href="index.html">
       <img class="logo3" src="dzimg/dzcolorlogo.png" alt="Circular logo">
@@ -101,7 +125,7 @@
 
   <main id="main" class="brand-content">
     <section class="brand-intro" aria-labelledby="project-title">
-      <img class="brand-intro-logo" src="topographyimg/topograpghyportfolio1.jpeg" alt="Two images of a man and woman">
+      <img class="brand-intro-logo" src="topographyimg/final1.png" style="width: 60%" alt="Two images, one of a man and woman">
       <h1 id="project-title">Portfolio</h1>
       <ul class="project-facts">
         <li><strong>Project:</strong>Typography Portfolio</li>
@@ -114,114 +138,125 @@
       </div>
     </section>
 
+
+
+    
+<dialog id="image-lightbox" aria-label="Enlarged image">
+  <button id="image-lightbox-close" type="button" aria-label="Close enlarged image">&times;</button>
+  <figure>
+    <img id="lightbox-image" src="" alt="">
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+</dialog>
+
     <section class="story-row" aria-labelledby="variations-title">
       <figure class="story-image">
-        <img src="topographyimg/topographyportfolio2.jpeg" alt="Written statement of project overview">
-        <figcaption>Variations of My Personal Logo</figcaption>
+        <img src="topographyimg/final2.png" alt="Written statement of project overview">
+        <figcaption>Project Overview</figcaption>
       </figure>
       <div class="story-copy">
-        <h2 id="variations-title">Logo Variations</h2>
-        <p>Here is my personal logo shown in two variations—color and black and white—presented in different sizes to demonstrate its versatility and adaptability.</p>
+        <h2 id="variations-title">Project 1 Overview</h2>
+        <p>A minimalist project overview page that outlines three goals: learning about type designers, adapting a typeface into an original creation, and researching the origins, structure, and meaning of typography. The project focuses on Jean François Porchez, Matthew Carter, and Tobias Frere-Jones, with the concept “Architecture & Built Environments."</p>
       </div>
     </section>
 
     <section class="story-row story-row--image-right" aria-labelledby="construction-title">
       <figure class="story-image">
-        <img src="topographyimg/topographyportfolio3.jpeg" alt="Typography and three different artists">
-        <figcaption>Construction Process</figcaption>
+        <img src="topographyimg/final3.png" alt="Typography and three different artists">
+        <figcaption>Type Designers</figcaption>
       </figure>
       <div class="story-copy">
-        <h2 id="construction-title">Typography &amp; Construction</h2>
-        <p>Using Bodoni 72 Bold, I combined the letters “D” and “Z.” This image demonstrates which parts of the original letterforms were incorporated into the final design.</p>
+        <h2 id="construction-title">Type Designers</h2>
+        <p>A project board that combines type specimens and portraits of type designers. The samples compare Matthew Carter's Roster, Tobias Frere-Jones's Nobel, and Jean François Porchez's Ambroise typefaces, alongside portraits of the designers. A large “Project 1” heading sits at the top.</p>
       </div>
     </section>
 
     <section class="story-row" aria-labelledby="process-title">
       <figure class="story-image">
-        <img src="topographyimg/topographyportfolio4.jpeg" alt="A picture and story of Jean Francois Porchez">
-        <figcaption>Logo Transformation</figcaption>
+        <img src="topographyimg/final4.png" alt="A picture and story of Jean Francois Porchez">
+        <figcaption>Magazine Spread</figcaption>
       </figure>
       <div class="story-copy">
-        <h2 id="process-title">Logo Process</h2>
-        <p>During this phase, it was difficult to decide which direction to take, from the construction of the letters to the color palette. Ultimately, I chose soft neutral colors for my personal logo.</p>
+        <h2 id="process-title">Jean François Porchez</h2>
+        <p>A magazine spread exploring Jean François Porchez's Ambroise typeface. Oversized decorative letterforms and a portrait sit alongside sample text, a large geometric illustration, and a panel showing variations of the typeface. The layout uses black, white, slate blue, and pale aqua to showcase Ambroise's ornate details and range.</p>
       </div>
     </section>
 
     <section class="story-row story-row--image-right" aria-labelledby="palette-title">
       <figure class="story-image">
-        <img src="topographyimg/topographyportfolio5.jpeg" alt="Wrriten statement of Project Overiview 2">
-        <figcaption>Color Palette for Logo</figcaption>
+        <img src="topographyimg/final5.png" alt="Written statement of Project Overiview 2">
+        <figcaption>Project Overview</figcaption>
       </figure>
       <div class="story-copy">
-        <h2 id="palette-title">Color Palette</h2>
-        <p>This palette combines soft pink, slate, sage, taupe, and light neutral tones to create a balanced and sophisticated look. The colors reflect warmth, creativity, and cultural inspiration while maintaining a modern and professional feel that supports my personal brand.</p>
+        <h2 id="palette-title">Project 2 Overview</h2>
+        <p>This lists goals around editorial spreads, zines, storytelling through a custom typeface, and defining the project’s theme and audience. A closing paragraph reflects on creating a specimen poster and zine, and explains the shift toward a more personal theme of cultural memory and identity.</p>
       </div>
     </section>
 
     <section class="story-row" aria-labelledby="process-title">
       <figure class="story-image">
-        <img src="topographyimg/topographyportfolio6.jpeg" alt="A picture and story of Jean Francois Porchez">
-        <figcaption>Logo Transformation</figcaption>
+        <img src="topographyimg/final6.png" alt="Two images that have letters all around">
+        <figcaption>Taino Poster</figcaption>
       </figure>
       <div class="story-copy">
-        <h2 id="process-title">Logo Process</h2>
-        <p>During this phase, it was difficult to decide which direction to take, from the construction of the letters to the color palette. Ultimately, I chose soft neutral colors for my personal logo.</p>
+        <h2 id="process-title">Project 2 Specimen Posters</h2>
+        <p>A “Project 2” presentation shows a custom decorative typeface inspired by Taíno art and Caribbean heritage. On the left, a vertical specimen poster layers oversized letterforms, symbols, and explanatory text in coral, aqua, and slate blue.</p>
       </div>
     </section>
 
      <section class="story-row story-row--image-right" aria-labelledby="palette-title">
       <figure class="story-image">
-        <img src="topographyimg/topographyportfolio7.jpeg" alt="Wrriten statement of Project Overiview 2">
-        <figcaption>Color Palette for Logo</figcaption>
+        <img src="topographyimg/final7.png" alt="Written statement of Project Overiview 3">
+        <figcaption>Project Overview</figcaption>
       </figure>
       <div class="story-copy">
-        <h2 id="palette-title">Color Palette</h2>
-        <p>This palette combines soft pink, slate, sage, taupe, and light neutral tones to create a balanced and sophisticated look. The colors reflect warmth, creativity, and cultural inspiration while maintaining a modern and professional feel that supports my personal brand.</p>
+        <h2 id="palette-title">Project 3 Overview</h2>
+        <p>This is a typography project focused on uppercase and lowercase forms, grid systems, and invisible frameworks. The goals include creating dynamic, unconventional compositions while using consistent layout and spacing to bring balance. The project also includes a cover page and magazine spread.</p>
       </div>
     </section>
 
     <section class="story-row" aria-labelledby="process-title">
       <figure class="story-image">
-        <img src="topographyimg/topographyportfolio8.jpeg" alt="A picture and story of Jean Francois Porchez">
-        <figcaption>Logo Transformation</figcaption>
+        <img src="topographyimg/final8.png" alt="Pictures with x's and labels on it.">
+        <figcaption>Wireframes</figcaption>
       </figure>
       <div class="story-copy">
-        <h2 id="process-title">Logo Process</h2>
-        <p>During this phase, it was difficult to decide which direction to take, from the construction of the letters to the color palette. Ultimately, I chose soft neutral colors for my personal logo.</p>
+        <h2 id="process-title">Typography Wireframes</h2>
+        <p>Project 3 Wireframe presents a magazine cover with a title, date, subcontext, and photo placeholders, followed by two editorial spread designs combining subtitles, paragraphs, and image areas. The diagrams show how text and photos could be arranged across the pages.</p>
       </div>
     </section>
 
     <section class="story-row story-row--image-right" aria-labelledby="palette-title">
       <figure class="story-image">
-        <img src="topographyimg/topographyportfolio9.jpeg" alt="Wrriten statement of Project Overiview 2">
-        <figcaption>Color Palette for Logo</figcaption>
+        <img src="topographyimg/final9.png" alt="Magazine cover of a woman">
+        <figcaption>Magazine Cover</figcaption>
       </figure>
       <div class="story-copy">
-        <h2 id="palette-title">Color Palette</h2>
-        <p>This palette combines soft pink, slate, sage, taupe, and light neutral tones to create a balanced and sophisticated look. The colors reflect warmth, creativity, and cultural inspiration while maintaining a modern and professional feel that supports my personal brand.</p>
+        <h2 id="palette-title">Taíno Magazine Cover</h2>
+        <p>A coral pink magazine cover titled “Indi Culture,” with the feature headline “Taíno Beliefs and Societal Changes.” A central portrait of a woman wearing a feathered headdress is layered with bold decorative lettering, red hibiscus flowers, and an image of a historic stone fort. White line drawings pattern the background, creating a vibrant collage about Taíno culture and identity.</p>
       </div>
     </section>
 
 
     <section class="story-row" aria-labelledby="process-title">
       <figure class="story-image">
-        <img src="topographyimg/topographyportfolio10.jpeg" alt="A picture and story of Jean Francois Porchez">
-        <figcaption>Logo Transformation</figcaption>
+        <img src="topographyimg/final10.png" alt="Magazine spread with stories, and a man and a woman sided by side.">
+        <figcaption>Inside Spread</figcaption>
       </figure>
       <div class="story-copy">
-        <h2 id="process-title">Logo Process</h2>
-        <p>During this phase, it was difficult to decide which direction to take, from the construction of the letters to the color palette. Ultimately, I chose soft neutral colors for my personal logo.</p>
+        <h2 id="process-title">Project 3</h2><h2>Inside Magazine Spread</h2>
+        <p>A two-page editorial spread about Taíno history, culture, and its continuing influence in Puerto Rico. The left page covers spirituality, art and symbols, community life, and the impact of colonization, arranged around a central portrait and a vertical decorative “Taíno” motif. The right page highlights Taíno legacy today with text about ancestry, language, and cultural revival, alongside a collage of hibiscus flowers and the Puerto Rican flag. Navy blue and coral pink unify the spread.</p>
       </div>
     </section>
 
      <section class="story-row story-row--image-right" aria-labelledby="palette-title">
       <figure class="story-image">
-        <img src="topographyimg/topographyportfolio11.jpeg" alt="Wrriten statement of Project Overiview 2">
-        <figcaption>Color Palette for Logo</figcaption>
+        <img src="topographyimg/final11.png" alt="Written statement of the final summary of the projects.">
+        <figcaption>Final Summary</figcaption>
       </figure>
       <div class="story-copy">
-        <h2 id="palette-title">Color Palette</h2>
-        <p>This palette combines soft pink, slate, sage, taupe, and light neutral tones to create a balanced and sophisticated look. The colors reflect warmth, creativity, and cultural inspiration while maintaining a modern and professional feel that supports my personal brand.</p>
+        <h2 id="palette-title">Finale</h2>
+        <p>A “Finale” page summarizes the project's design approach. It explains how grid and modular systems organize paragraphs and photos, then describes a custom typeface inspired by Indigenous Caribbean and Taíno visual traditions. Repeating organic motifs, spirals, and geometric cuts reference petroglyphs and ceremonial markings, shaping typography into both a communication tool and a form of cultural expression.</p>
       </div>
     </section>
 
@@ -235,16 +270,16 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="topographyimg/Type1.png" alt="Black and white tote bag with the letters D and Z combined in the center">
-          <div class="carousel-caption d-none d-md-block"><h3>Bag Mockup</h3></div>
+          <img src="topographyimg/miller.png" alt="Poster of miller font.">
+          <div class="carousel-caption d-none d-md-block"><h3>"miller" Matthew Carter</h3></div>
         </div>
         <div class="carousel-item">
-          <img src="topographyimg/Type2.png" alt="Beige hat with the letters D and Z combined in the center">
-          <div class="carousel-caption d-none d-md-block"><h3>Hat Mockup</h3></div>
+          <img src="topographyimg/Type2.png" alt="Poster of nobel font.">
+          <div class="carousel-caption d-none d-md-block"><h3>"nobel" Tobias Frere-Jones</h3></div>
         </div>
         <div class="carousel-item">
-          <img src="topographyimg/Specimen Poster.png" alt="Business cards and bottles featuring the personal brand">
-          <div class="carousel-caption d-none d-md-block"><h3>Business Cards &amp; Bottles Mockup</h3></div>
+          <img src="topographyimg/Specimen Poster.png" alt="Poster of Taino Glyph font.">
+          <div class="carousel-caption d-none d-md-block"><h3>"Taino Glyph" Damaris Zuluaga</h3></div>
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#imageSlider" data-bs-slide="prev">
@@ -262,28 +297,47 @@
     <a href="#top">&#11014; Back to top</a>
     <p>© 2026</p>
   </footer>
+<script>
+  const lightbox = document.getElementById('image-lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('image-lightbox-close');
 
-  <script>
-    const root = document.documentElement;
-    const themeButton = document.getElementById('theme-btn');
-    const savedTheme = localStorage.getItem('theme');
+  document.querySelectorAll('#main img').forEach((image) => {
+    image.tabIndex = 0;
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', `Enlarge image: ${image.alt || 'portfolio image'}`);
 
-    function setTheme(theme) {
-      const isDark = theme === 'dark';
-      root.dataset.theme = isDark ? 'dark' : 'light';
-      themeButton.setAttribute('aria-pressed', String(isDark));
-      themeButton.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    function openLightbox() {
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt;
+      lightboxCaption.textContent =
+        image.closest('figure')?.querySelector('figcaption')?.textContent || image.alt;
+      lightbox.showModal();
+      lightboxClose.focus();
     }
 
-    setTheme(savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
-
-    themeButton.addEventListener('click', () => {
-      const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-      setTheme(nextTheme);
-      localStorage.setItem('theme', nextTheme);
+    image.addEventListener('click', openLightbox);
+    image.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openLightbox();
+      }
     });
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  });
+
+  lightboxClose.addEventListener('click', () => lightbox.close());
+
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) lightbox.close();
+  });
+
+  lightbox.addEventListener('close', () => {
+    lightboxImage.src = '';
+  });
+</script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/function.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
